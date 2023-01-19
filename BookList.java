@@ -4,7 +4,17 @@ public class BookList {
     ArrayList<Book> books;
 
     public void addToList(Book book){
-        books.add(book);
+        //search
+        for (Book i : books){
+            if (i.author.equals(book.author) && i.title.equals(book.title)){
+                book.qty ++;
+                System.out.println("Added a copy of " + book.title);
+            }
+            else{
+                books.add(book);
+                System.out.println("Added " + book.title);
+            }
+        }
     }
 
     public void removeFromList(String author, String title){
