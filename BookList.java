@@ -40,6 +40,18 @@ public class BookList {
     }
 
     public void printTable(){
+        System.out.println(" ______________________________________________________________");
+        System.out.println("| Title       | Genre    | Author       | Subject| Edition |QTY|");
+        System.out.println("|-------------|----------|--------------|--------|---------|---|");
+    }
 
+    public int findLongestTitle(){
+        String longestTitle = books.get(0).title;
+        for (Book b: books){
+            if (b.title.length() > longestTitle.length()){
+                longestTitle = b.title;
+            }
+        }
+        return longestTitle.length();
     }
 }
