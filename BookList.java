@@ -40,10 +40,23 @@ public class BookList {
     }
 
     public void printTable(){
+        int longestTitle = findLongestTitle();
+        int longestGenre = findLongestGenre();
+        int longestAuthor = findLongestAuthor();
+        int longestSubject = findLongestSubject();
+        int longestEdition = findLongestEdition();
+        int longestQty = findLongestQty();
+        
+        System.out.print(" ");
+        
+        
+        
         System.out.println(" ______________________________________________________________");
         System.out.println("| Title       | Genre    | Author       | Subject| Edition |QTY|");
         System.out.println("|-------------|----------|--------------|--------|---------|---|");
     }
+
+    //there's gotta be a better way to do this, right?
 
     public int findLongestTitle(){
         String longestTitle = books.get(0).title;
@@ -53,5 +66,50 @@ public class BookList {
             }
         }
         return longestTitle.length();
+    }
+    public int findLongestGenre(){
+        String longestGenre = books.get(0).genre;
+        for (Book b: books){
+            if (b.genre.length() > longestGenre.length()){
+                longestGenre = b.title;
+            }
+        }
+        return longestGenre.length();
+    }
+    public int findLongestAuthor(){
+        String longestAuthor = books.get(0).author;
+        for (Book b: books){
+            if (b.author.length() > longestAuthor.length()){
+                longestAuthor = b.title;
+            }
+        }
+        return longestAuthor.length();
+    }
+    public int findLongestSubject(){
+        String longestSubject = books.get(0).subject;
+        for (Book b: books){
+            if (b.subject.length() > longestSubject.length()){
+                longestSubject = b.title;
+            }
+        }
+        return longestSubject.length();
+    }
+    public int findLongestEdition(){
+        String longestEdition = Integer.toString(books.get(0).edition);
+        for (Book b: books){
+            if (Integer.toString(b.edition).length() > longestEdition.length()){
+                longestEdition = Integer.toString(b.edition);
+            }
+        }
+        return longestEdition.length();
+    }
+    public int findLongestQty(){
+        String longestQty = Integer.toString(books.get(0).qty);
+        for (Book b: books){
+            if (Integer.toString(b.qty).length() > longestQty.length()){
+                longestQty = Integer.toString(b.qty);
+            }
+        }
+        return longestQty.length();
     }
 }
