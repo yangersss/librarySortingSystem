@@ -1,4 +1,7 @@
 public class TextBook extends Book{
+    public TextBook(String str){
+        super(str);
+    }
     public void printInfo() {
         System.out.println("Title: " + this.title);
         System.out.println("Genre: " + this.genre);

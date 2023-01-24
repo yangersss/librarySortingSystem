@@ -8,7 +8,7 @@ public abstract class Book{
 
     //longer projects should use private attributes and setter/getter methods
 
-    public void book(String str){
+    public Book(String str){
         // title, genre, author, subject, edition, qty
 
         String[] words = str.split(",");

@@ -48,10 +48,30 @@ public class BookList {
         int longestQty = findLongestQty();
         
         System.out.print(" ");
+        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 6; i++){
+            System.out.print("_");
+        }
+        System.out.println("| Title");
+        for (int i = 0; i < longestTitle - 6; i++){
+            System.out.print(" ");
+        }
+        System.out.print("| Genre");
+        for (int i = 0; i < longestGenre - 6; i++){
+            System.out.print(" ");
+        }
+        System.out.print("| Author");
+        for (int i = 0; i < longestAuthor - 7; i++){
+            System.out.print(" ");
+        }
+        System.out.print(" Subject");
+        for (int i = 0; i < longestSubject - 8; i++){
+            System.out.print(" ");
+        }
+        System.out.print("| Edition | QTY|");
+
         
         
-        
-        System.out.println(" ______________________________________________________________");
+        System.out.println(" _______________________________________________________________");
         System.out.println("| Title       | Genre    | Author       | Subject| Edition |QTY|");
         System.out.println("|-------------|----------|--------------|--------|---------|---|");
     }
