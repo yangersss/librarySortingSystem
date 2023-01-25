@@ -16,8 +16,13 @@ public abstract class Book{
         genre = words[1];
         author = words[2];
         subject = words[3];
-        edition = Integer.parseInt(words[4]);
-        qty = Integer.parseInt(words[5]);
+        if (words[4] == null){
+            edition = 0;
+        }
+        else{
+            edition = Integer.parseInt(words[4]);
+        }
+        qty = 0;
     }
 
     public void printInfo(){
