@@ -15,14 +15,14 @@ public abstract class Book{
         title = words[0];
         genre = words[1];
         author = words[2];
-        subject = words[3];
-        if (words[4] == null){
-            edition = 0;
+        if (words[3] == null){
+            subject = "";
         }
         else{
-            edition = Integer.parseInt(words[4]);
+            subject = words[3];
         }
-        qty = 0;
+        edition = Integer.parseInt(words[4]);
+        qty = 1;
     }
 
     public void printInfo(){

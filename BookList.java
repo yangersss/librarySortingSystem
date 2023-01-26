@@ -52,7 +52,7 @@ public class BookList {
         int longestQty = findLongestQty();
         
         System.out.print(" ");
-        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 6; i++){
+        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 15; i++){
             System.out.print("_");
         }
         System.out.print("\n| Title");
@@ -72,6 +72,31 @@ public class BookList {
             System.out.print(" ");
         }
         System.out.print("| Edition | QTY|");
+        
+        
+        for (Book b : books){
+            System.out.print("\n|" + b.title);
+            for (int i = 0; i < longestTitle - b.title.length(); i++){
+                System.out.print(" ");
+            }
+            System.out.print("|" + b.genre);
+            for (int i = 0; i < longestGenre - b.genre.length(); i++){
+                System.out.print(" ");
+            }
+            System.out.print("|" + b.author);
+            for (int i = 0; i < longestAuthor - b.author.length(); i++){
+                System.out.print(" ");
+            }
+            System.out.print("|" + b.subject);
+            for (int i = 0; i < longestSubject - b.subject.length(); i++){
+                System.out.print(" ");
+            }
+            System.out.print("|" + b.edition);
+            for (int i = 0; i < 9 - Integer.valueOf(b.edition).toString().length(); i++){
+                System.out.print(" ");
+            }
+            System.out.print("|" + b.qty + "   |");
+        }
 
         
         
@@ -104,7 +129,7 @@ public class BookList {
         String longestAuthor = "";
         for (Book b: books){
             if (b.author.length() > longestAuthor.length()){
-                longestAuthor = b.title;
+                longestAuthor = b.author;
             }
         }
         return longestAuthor.length();
