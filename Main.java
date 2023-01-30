@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-//import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
@@ -14,24 +13,26 @@ public class Main {
 
         while (myScanner.hasNextLine()){
             String[] words = line.split(",");
-            switch (words[1]){
-                case "Fiction":
-                    b.books.add(new FictionBook(line));
-                    break;
-                case "Textbook":
-                    b.books.add(new TextBook(line));
-                    break;
-                case "Nonfiction":
-                    b.books.add(new NonfictionBook(line));
-                    break;
-                default:
-                    System.out.println("Invalid");
-                    break;
+            
+            if (words[1].equals("Fiction")){
+                b.addToList(new FictionBook(line));
+            }
+            else if (words[1].equals("Textbook")){
+                b.addToList(new TextBook(line));
+            }
+            else if (words[1].equals("Nonfiction")){
+                b.addToList(new NonfictionBook(line));
+            }
+            else{
+                System.out.println("Invalid");
             }
             line = myScanner.nextLine();
         }
+
+        myScanner.close();
+
         b.printTable();
-        
+        //b.sortList("title");
         
     }
 }

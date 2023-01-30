@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BookList {
     ArrayList<Book> books;
@@ -9,15 +10,18 @@ public class BookList {
 
     public void addToList(Book book){
         //search
+        boolean found = false;
+        
         for (Book i : books){
             if (i.author.equals(book.author) && i.title.equals(book.title)){
-                book.qty ++;
+                i.qty ++;
                 System.out.println("Added a copy of " + book.title);
-            }
-            else{
-                books.add(book);
-                System.out.println("Added " + book.title);
-            }
+                found = true;
+            } 
+        }
+        if (!found){
+            books.add(book);
+            System.out.println("Added " + book.title);
         }
     }
 
@@ -41,6 +45,33 @@ public class BookList {
 
     public void sortList(String method){ //methods: title, genre, author, subject
         //just for giggles, what if we do quicksort
+        //okay nevermind that is too much work and i am lazy
+        
+        switch (method.toLowerCase()){
+            case "title":
+                for (int i = 1; i < books.size(); i ++){
+                    if (books.get(i).title.compareTo(books.get(i -1).title) < 0){
+                        Collections.swap(books, i, i - 1);
+                        if (i > 1){
+                            for (int j = i - 1; i > 0; i--){
+                                if (books.get(j).title.compareTo(books.get(j-1).title) < 0){
+                                    Collections.swap(books, j, j - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.println("Here's the sorted booklist:");
+                printTable();
+                break;
+            case "genre":
+                break;
+            case "author":
+                break;
+            case "subject":
+                break;
+        }
+
     }
 
     public void printTable(){
@@ -96,6 +127,10 @@ public class BookList {
                 System.out.print(" ");
             }
             System.out.print("|" + b.qty + "   |");
+        }
+        System.out.println(" ");
+        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 16; i++){
+            System.out.print("_");
         }
 
         
