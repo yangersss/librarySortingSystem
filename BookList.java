@@ -4,28 +4,28 @@ import java.util.Collections;
 public class BookList {
     ArrayList<Book> books;
 
-    public BookList(){
+    public BookList(){ //constructor
         books = new ArrayList<Book>();
     }
 
-    public void addToList(Book book){
+    public void addToList(Book book){ //add this book to the ArrayList. if an instance already exists, increment the quantity by one
         //search
-        boolean found = false;
+        boolean found = false; //
         
         for (Book i : books){
-            if (i.author.equals(book.author) && i.title.equals(book.title)){
+            if (i.author.equals(book.author) && i.title.equals(book.title)){ //check author and title to see if they match
                 i.qty ++;
-                System.out.println("Added a copy of " + book.title);
+                //System.out.println("Added a copy of " + book.title);
                 found = true;
             } 
         }
         if (!found){
             books.add(book);
-            System.out.println("Added " + book.title);
+            //System.out.println("Added " + book.title);
         }
     }
 
-    public void removeFromList(String author, String title){
+    public void removeFromList(String author, String title){ // input an author and title of a book. if they match an element in the arraylist, remove it from the list
         for (Book book : books){
             if (book.author.equals(author) && book.title.equals(title)){
                 books.remove(book);
@@ -34,7 +34,7 @@ public class BookList {
         }
     }
 
-    public void removeFromList(String author, String title, int edition){
+    public void removeFromList(String author, String title, int edition){ // same as the previous function, but overloaded to also take in an int edition 
         for (Book book : books){
             if (book.author.equals(author) && book.title.equals(title) && book.edition == edition){
                 books.remove(book);
@@ -47,7 +47,7 @@ public class BookList {
         //just for giggles, what if we do quicksort
         //okay nevermind that is too much work and i am lazy
         
-        switch (method.toLowerCase()){
+        switch (method.toLowerCase()){ //insertion sort to sort by string method input
             case "title":
                 for (int i = 1; i < books.size(); i ++){
                     if (books.get(i).title.compareTo(books.get(i -1).title) < 0){
@@ -61,21 +61,63 @@ public class BookList {
                         }
                     }
                 }
-                System.out.println("Here's the sorted booklist:");
+                System.out.println("Here's the booklist sorted by " + method + ":");
                 printTable();
                 break;
             case "genre":
+                for (int i = 1; i < books.size(); i ++){
+                    if (books.get(i).genre.compareTo(books.get(i -1).genre) < 0){
+                        Collections.swap(books, i, i - 1);
+                        if (i > 1){
+                            for (int j = i - 1; i > 0; i--){
+                                if (books.get(j).genre.compareTo(books.get(j-1).genre) < 0){
+                                    Collections.swap(books, j, j - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.println("Here's the booklist sorted by " + method + ":");
+                printTable();
                 break;
             case "author":
+                for (int i = 1; i < books.size(); i ++){
+                    if (books.get(i).author.compareTo(books.get(i -1).author) < 0){
+                        Collections.swap(books, i, i - 1);
+                        if (i > 1){
+                            for (int j = i - 1; i > 0; i--){
+                                if (books.get(j).author.compareTo(books.get(j-1).author) < 0){
+                                    Collections.swap(books, j, j - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.println("Here's the booklist sorted by " + method + ":");
+                printTable();
                 break;
             case "subject":
+                for (int i = 1; i < books.size(); i ++){
+                    if (books.get(i).subject.compareTo(books.get(i -1).subject) < 0){
+                        Collections.swap(books, i, i - 1);
+                        if (i > 1){
+                            for (int j = i - 1; i > 0; i--){
+                                if (books.get(j).subject.compareTo(books.get(j-1).subject) < 0){
+                                    Collections.swap(books, j, j - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.println("Here's the booklist sorted by " + method + ":");
+                printTable();
                 break;
         }
 
     }
 
     public void printTable(){
-        int longestTitle = findLongestTitle();
+        int longestTitle = findLongestTitle(); //variables used to have identialy spaced columns
         int longestGenre = findLongestGenre();
         int longestAuthor = findLongestAuthor();
         int longestSubject = findLongestSubject();
@@ -83,10 +125,10 @@ public class BookList {
         int longestQty = findLongestQty();
         
         System.out.print(" ");
-        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 15; i++){
+        for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 15; i++){ //long line at the top
             System.out.print("_");
         }
-        System.out.print("\n| Title");
+        System.out.print("\n| Title"); //this part prints out the column headers
         for (int i = 0; i < longestTitle - 6; i++){
             System.out.print(" ");
         }
@@ -105,7 +147,7 @@ public class BookList {
         System.out.print("| Edition | QTY|");
         
         
-        for (Book b : books){
+        for (Book b : books){ //prints out the rows, with proper spacing
             System.out.print("\n|" + b.title);
             for (int i = 0; i < longestTitle - b.title.length(); i++){
                 System.out.print(" ");
@@ -128,16 +170,10 @@ public class BookList {
             }
             System.out.print("|" + b.qty + "   |");
         }
-        System.out.println(" ");
+        System.out.println(" "); //then, print out a long bar at the bottom (same as above)
         for (int i = 0; i < longestTitle + longestGenre + longestAuthor + longestSubject + longestEdition + longestQty + 16; i++){
             System.out.print("_");
         }
-
-        
-        
-        //System.out.println(" _______________________________________________________________");
-        //System.out.println("| Title       | Genre    | Author       | Subject| Edition |QTY|");
-        //System.out.println("|-------------|----------|--------------|--------|---------|---|");
     }
 
     //there's gotta be a better way to do this, right?

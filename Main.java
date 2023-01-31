@@ -31,8 +31,9 @@ public class Main {
 
         myScanner.close();
 
-        b.printTable();
-        //b.sortList("title");
+        //b.printTable();
+        b.sortList("title");
+        b.sortList("genre");
         
     }
 }

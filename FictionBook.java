@@ -1,6 +1,6 @@
 public class FictionBook extends Book{   
     public FictionBook(String str){
-        super(str);
+        super(str); // use the constructor in the abstract class Book
     }
     
     public void printInfo() {
