@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BookList {
     ArrayList<Book> books;
@@ -51,67 +50,90 @@ public class BookList {
             case "title":
                 for (int i = 1; i < books.size(); i ++){
                     if (books.get(i).title.compareTo(books.get(i -1).title) < 0){
-                        Collections.swap(books, i, i - 1);
+                        /* Swap (index 1, index 2, temp)
+                        temp = 2 (1, 2, 2)
+                        2 = 1   (1, 1, 2)
+                        1 = temp(2) (2, 1, 2)                
+                         */
+                        Book temp = books.get(i - 1);
+                        books.set(i - 1, books.get(i));
+                        books.set(i, temp);
                         if (i > 1){
                             for (int j = i - 1; i > 0; i--){
                                 if (books.get(j).title.compareTo(books.get(j-1).title) < 0){
-                                    Collections.swap(books, j, j - 1);
+                                    Book temp2 = books.get(j - 1);
+                                    books.set(j - 1, books.get(j));
+                                    books.set(j, temp2);
                                 }
                             }
                         }
                     }
                 }
-                System.out.println("Here's the booklist sorted by " + method + ":");
+                System.out.println("\nHere's the booklist sorted by " + method + ":");
                 printTable();
                 break;
             case "genre":
                 for (int i = 1; i < books.size(); i ++){
                     if (books.get(i).genre.compareTo(books.get(i -1).genre) < 0){
-                        Collections.swap(books, i, i - 1);
+                        Book temp = books.get(i - 1);
+                        books.set(i - 1, books.get(i));
+                        books.set(i, temp);
                         if (i > 1){
                             for (int j = i - 1; i > 0; i--){
                                 if (books.get(j).genre.compareTo(books.get(j-1).genre) < 0){
-                                    Collections.swap(books, j, j - 1);
+                                    Book temp2 = books.get(j - 1);
+                                    books.set(j - 1, books.get(j));
+                                    books.set(j, temp2);
                                 }
                             }
                         }
                     }
                 }
-                System.out.println("Here's the booklist sorted by " + method + ":");
+                System.out.println("\nHere's the booklist sorted by " + method + ":");
                 printTable();
                 break;
             case "author":
                 for (int i = 1; i < books.size(); i ++){
                     if (books.get(i).author.compareTo(books.get(i -1).author) < 0){
-                        Collections.swap(books, i, i - 1);
+                        Book temp = books.get(i - 1);
+                        books.set(i - 1, books.get(i));
+                        books.set(i, temp);
                         if (i > 1){
                             for (int j = i - 1; i > 0; i--){
                                 if (books.get(j).author.compareTo(books.get(j-1).author) < 0){
-                                    Collections.swap(books, j, j - 1);
+                                    Book temp2 = books.get(j - 1);
+                                    books.set(j - 1, books.get(j));
+                                    books.set(j, temp2);
                                 }
                             }
                         }
                     }
                 }
-                System.out.println("Here's the booklist sorted by " + method + ":");
+                System.out.println("\nHere's the booklist sorted by " + method + ":");
                 printTable();
                 break;
             case "subject":
                 for (int i = 1; i < books.size(); i ++){
                     if (books.get(i).subject.compareTo(books.get(i -1).subject) < 0){
-                        Collections.swap(books, i, i - 1);
+                        Book temp = books.get(i - 1);
+                        books.set(i - 1, books.get(i));
+                        books.set(i, temp);
                         if (i > 1){
                             for (int j = i - 1; i > 0; i--){
                                 if (books.get(j).subject.compareTo(books.get(j-1).subject) < 0){
-                                    Collections.swap(books, j, j - 1);
+                                    Book temp2 = books.get(j - 1);
+                                    books.set(j - 1, books.get(j));
+                                    books.set(j, temp2);
                                 }
                             }
                         }
                     }
                 }
-                System.out.println("Here's the booklist sorted by " + method + ":");
+                System.out.println("\nHere's the booklist sorted by " + method + ":");
                 printTable();
                 break;
+            default:
+                System.out.println("\ninvalid method");
         }
 
     }

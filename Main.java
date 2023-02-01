@@ -5,16 +5,16 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
         File srcFile = new File ("./booklist.csv");
-        Scanner myScanner = new Scanner(srcFile);
+        Scanner myScanner = new Scanner(srcFile); //ready the file
 
         BookList b = new BookList ();
         
-        String line = myScanner.nextLine();
+        String line = myScanner.nextLine(); //prepare first line
 
-        while (myScanner.hasNextLine()){
-            String[] words = line.split(",");
+        while (myScanner.hasNextLine()){ //until it goes to the end
+            String[] words = line.split(",");//split each line of csv into array of words
             
-            if (words[1].equals("Fiction")){
+            if (words[1].equals("Fiction")){//index 1 contains genre. based off genre, create instance of fictionbook, textbook,nonfictionbook
                 b.addToList(new FictionBook(line));
             }
             else if (words[1].equals("Textbook")){
@@ -24,9 +24,9 @@ public class Main {
                 b.addToList(new NonfictionBook(line));
             }
             else{
-                System.out.println("Invalid");
+                System.out.println("Run out of lines");
             }
-            line = myScanner.nextLine();
+            line = myScanner.nextLine();//incrememnt to next line
         }
 
         myScanner.close();
@@ -34,6 +34,9 @@ public class Main {
         //b.printTable();
         b.sortList("title");
         b.sortList("genre");
+        b.sortList("author");
+        b.sortList("subject");
         
+        b.sortList("dababy");
     }
 }
